@@ -1,10 +1,8 @@
-"use client";
-import React, { useState, useEffect, useRef, useCallback } from "react";
+import React, { useState, useEffect, useCallback, useRef } from 'react'; 
+import { AnimatePresence, motion } from 'framer-motion';
+import { IconDotsVertical } from '@tabler/icons-react';
 import { SparklesCore } from "../ui/sparkles";
-import { AnimatePresence, motion } from "framer-motion";
-import { cn } from "../../lib/utils";
-import { IconDotsVertical } from "@tabler/icons-react";
-import Image from "next/image"; // Import Image from Next.js
+import Image from 'next/image';
 
 interface CompareProps {
   firstImage?: string;
@@ -33,8 +31,8 @@ export const Compare = ({
 }: CompareProps) => {
   const [sliderXPercent, setSliderXPercent] = useState(initialSliderPercentage);
   const [isDragging, setIsDragging] = useState(false);
-
   const sliderRef = useRef<HTMLDivElement>(null);
+
   const autoplayRef = useRef<NodeJS.Timeout | null>(null);
 
   const startAutoplay = useCallback(() => {
@@ -80,11 +78,14 @@ export const Compare = ({
     startAutoplay();
   }
 
-  const handleStart = useCallback(() => {
-    if (slideMode === "drag") {
-      setIsDragging(true);
-    }
-  }, [slideMode]);
+  const handleStart = useCallback(
+    () => {  // Removed 'e' here
+      if (slideMode === "drag") {
+        setIsDragging(true);
+      }
+    },
+    [slideMode]
+  );
 
   const handleEnd = useCallback(() => {
     if (slideMode === "drag") {
@@ -107,10 +108,13 @@ export const Compare = ({
     [slideMode, isDragging]
   );
 
-  const handleMouseDown = useCallback(() => handleStart(), [handleStart]);
+  const handleMouseDown = useCallback(
+    () => handleStart(),
+    [handleStart]
+  );
   const handleMouseUp = useCallback(() => handleEnd(), [handleEnd]);
   const handleMouseMove = useCallback(
-    (e: React.MouseEvent) => handleMove(e.clientX),
+    () => handleMove(0),  // Removed 'e' here
     [handleMove]
   );
 
@@ -141,7 +145,7 @@ export const Compare = ({
   return (
     <div
       ref={sliderRef}
-      className={cn("w-[400px] h-[400px] overflow-hidden", className)}
+      className={className}
       style={{
         position: "relative",
         cursor: slideMode === "drag" ? "grab" : "col-resize",
@@ -168,17 +172,17 @@ export const Compare = ({
           <div className="w-36 h-full [mask-image:radial-gradient(100px_at_left,white,transparent)] absolute top-1/2 -translate-y-1/2 left-0 bg-gradient-to-r from-indigo-400 via-transparent to-transparent z-20 opacity-50" />
           <div className="w-10 h-1/2 [mask-image:radial-gradient(50px_at_left,white,transparent)] absolute top-1/2 -translate-y-1/2 left-0 bg-gradient-to-r from-cyan-400 via-transparent to-transparent z-10 opacity-100" />
           <div className="w-10 h-3/4 top-1/2 -translate-y-1/2 absolute -right-10 [mask-image:radial-gradient(100px_at_left,white,transparent)]">
-            <MemoizedSparklesCore
+            <SparklesCore
               background="transparent"
-              minSize={0.4}
-              maxSize={1}
+              minSize={0.5}
+              maxSize={2}
               particleDensity={1200}
               className="w-full h-full"
               particleColor="#FFFFFF"
             />
           </div>
           {showHandlebar && (
-            <div className="h-5 w-5 rounded-md top-1/2 -translate-y-1/2 bg-white z-30 -right-2.5 absolute   flex items-center justify-center shadow-[0px_-1px_0px_0px_#FFFFFF40]">
+            <div className="h-5 w-5 rounded-md top-1/2 -translate-y-1/2 bg-white z-30 -right-2.5 absolute flex items-center justify-center shadow-[0px_-1px_0px_0px_#FFFFFF40]">
               <IconDotsVertical className="h-4 w-4 text-black" />
             </div>
           )}
@@ -188,10 +192,7 @@ export const Compare = ({
         <AnimatePresence initial={false}>
           {firstImage ? (
             <motion.div
-              className={cn(
-                "absolute inset-0 z-20 rounded-2xl flex-shrink-0 w-full h-full select-none overflow-hidden",
-                firstImageClassName
-              )}
+              className={firstImageClassName}
               style={{
                 clipPath: `inset(0 ${100 - sliderXPercent}% 0 0)`,
               }}
@@ -200,13 +201,9 @@ export const Compare = ({
               <Image
                 alt="first image"
                 src={firstImage}
-                className={cn(
-                  "absolute inset-0  z-20 rounded-2xl flex-shrink-0 w-full h-full select-none",
-                  firstImageClassName
-                )}
-                draggable={false}
-                layout="fill" // Use layout="fill" to make the image fill the parent container
-                objectFit="cover" // Ensures the image covers the area without distortion
+                layout="fill"
+                objectFit="cover"
+                className={firstImageClassName}
               />
             </motion.div>
           ) : null}
@@ -215,28 +212,14 @@ export const Compare = ({
 
       <AnimatePresence initial={false}>
         {secondImage ? (
-          <motion.div
-            className={cn(
-              "absolute top-0 left-0 z-[19]  rounded-2xl w-full h-full select-none",
-              secondImageClassname
-            )}
-            transition={{ duration: 0 }}
-          >
-            <Image
-              alt="second image"
-              src={secondImage}
-              className={cn(
-                "absolute top-0 left-0 z-[19]  rounded-2xl w-full h-full select-none"
-              )}
-              draggable={false}
-              layout="fill"
-              objectFit="cover"
-            />
-          </motion.div>
+          <motion.img
+            className={secondImageClassname}
+            alt="second image"
+            src={secondImage}
+            draggable={false}
+          />
         ) : null}
       </AnimatePresence>
     </div>
   );
 };
-
-const MemoizedSparklesCore = React.memo(SparklesCore);

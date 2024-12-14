@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from 'react'; // Removed useRef if not needed
+import React, { useState, useEffect, useCallback } from 'react';
 import { motion } from 'framer-motion';
 
 // Define the type for the particle
@@ -11,19 +11,30 @@ interface SparkleProps {
   background?: string;
   particleColor?: string;
   className?: string;
+  minSize?: number;        // Minimum size of the particles
+  maxSize?: number;        // Maximum size of the particles
+  particleDensity?: number; // Number of particles (density)
 }
 
 export const SparklesCore = ({
   background = "transparent",
   particleColor = "#FFFFFF",
   className,
+  minSize = 0.5,
+  maxSize = 1,
+  particleDensity = 100, // Default number of particles
 }: SparkleProps) => {
-  const [particles, setParticles] = useState<Particle[]>([]); // Replace 'any' with a more specific type
+  const [particles, setParticles] = useState<Particle[]>([]);
 
   const createParticles = useCallback(() => {
-    // Logic to create particles
-    setParticles([{ id: 1, size: 10 }, { id: 2, size: 20 }]); // Example
-  }, []);
+    // Create an array of particles based on the density
+    const newParticles = [];
+    for (let i = 0; i < particleDensity; i++) {
+      const size = Math.random() * (maxSize - minSize) + minSize; // Random size between minSize and maxSize
+      newParticles.push({ id: i, size });
+    }
+    setParticles(newParticles);
+  }, [minSize, maxSize, particleDensity]);
 
   useEffect(() => {
     createParticles();
