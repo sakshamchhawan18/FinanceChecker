@@ -1,10 +1,10 @@
-// app/page.tsx
-
+"use client";
+import { useEffect } from "react";
 
 export default function Home() {
-  return (
-    <main className="flex flex-col items-center justify-center min-h-screen bg-gray-100">
-     
-    </main>
-  );
+  useEffect(() => {
+    console.log("Clerk Publishable Key", process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY);
+  }, []);
+
+  return <div>Welcome to the Next.js app!</div>;
 }
