@@ -1,14 +1,14 @@
 // app/layout.tsx
-
+"use client"
 import { ClerkProvider } from "@clerk/nextjs";
 import "@/app/styles/global.css"; // Correct import for global styles
-import Navbar from "@/components/Navbar";
-import HowItWorksSection from "@/components/ui/HowItWorks";
-import BackgroundLinesDemo from "@/components/BackgroundLinesDemo";
-import { CardDemo } from "@/components/Demo";
-import Features from "@/components/Features";
-import Faq from "@/components/Faq";
-import Footer from "@/components/Footer";
+import Navbar from "../components/Navbar";
+import HowItWorksSection from "../components/ui/HowItWorks";
+import BackgroundLinesDemo from "../components/BackgroundLinesDemo";
+
+import Features from "../components/Features";
+import Faq from "../components/Faq";
+import Footer from "../components/Footer";
 
 
 export default function RootLayout({

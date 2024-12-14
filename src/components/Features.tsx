@@ -1,6 +1,5 @@
 import React from "react";
-import { Compare } from "@/components/ui/compare";
-import { GlobeDemo } from "./ui/GlobeDemo";
+import { Compare } from "./ui/compare";
 
 const Features = () => {
   return (
@@ -37,13 +36,9 @@ const Features = () => {
 
             {/* Right Box */}
             <div
-  className="p-6 rounded-xl text-white bg-[url(https://plus.unsplash.com/premium_vector-1711987768568-d2d79c8e0d07?q=80&w=3076&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)] 
-  bg-cover bg-center w-[400px] md:w-[600px] h-[300px] flex-none ml-6"
->
-
-                
-           
-            
+              className="p-6 rounded-xl text-white bg-[url(https://plus.unsplash.com/premium_vector-1711987768568-d2d79c8e0d07?q=80&w=3076&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)] 
+              bg-cover bg-center w-[400px] md:w-[600px] h-[300px] flex-none ml-6"
+            >
             </div>
           </div>
 
@@ -54,15 +49,15 @@ const Features = () => {
               <h3 className="bg-clip-text text-transparent text-left bg-gradient-to-b from-purple-700 to-purple-400 dark:from-purple-600 dark:to-purple-300 text-3xl font-sans py-2 md:py-5 relative z-20 font-semibold tracking-tight">
                 Enhanced Lending Decisions
               </h3>
-              <div className=" p-6 rounded-lg center text-white ml-6 flex-none">
-              <Compare
-        firstImage="https://assets.aceternity.com/code-problem.png"
-        secondImage="https://assets.aceternity.com/code-solution.png"
-        firstImageClassName="object-cover object-left-top"
-        secondImageClassname="object-cover object-left-top"
-        className="h-[150px] w-[100px] md:h-[300px] md:w-[500px]"
-        slideMode="hover"
-      />
+              <div className="p-6 rounded-lg center text-white ml-6 flex-none">
+                <Compare
+                  firstImage="https://assets.aceternity.com/code-problem.png"
+                  secondImage="https://assets.aceternity.com/code-solution.png"
+                  firstImageClassName="object-cover object-left-top"
+                  secondImageClassname="object-cover object-left-top"
+                  className="h-[150px] w-[100px] md:h-[300px] md:w-[500px]"
+                  slideMode="hover"
+                />
               </div>
               <p className="text-gray-600 mt-2 text-left">
                 AI-Powered Fraud Detection with Clear Explanations. Fraud detection
@@ -75,12 +70,11 @@ const Features = () => {
             {/* Box 2 */}
             <div className="bg-white p-6 rounded-xl shadow-xl hover:shadow-2xl transition duration-300 transform group/bento hover:scale-105 cursor-pointer">
               <h3 className="bg-clip-text text-transparent text-left bg-gradient-to-b from-purple-700 to-purple-400 dark:from-purple-600 dark:to-purple-300 text-3xl font-sans py-2 md:py-5 relative z-20 font-semibold tracking-tight">
-              Navigate Loan Risks in a Changing World
+                Navigate Loan Risks in a Changing World
               </h3>
-             
               <p className="text-gray-600 mt-2 text-left">
                 Predicting loan defaults is a challenge for lenders. Our explainable machine learning models
-                analyze borrowers' financial behavior to predict default risks with greater accuracy. With insights
+                analyze borrowers&apos; financial behavior to predict default risks with greater accuracy. With insights
                 such as, “The loan has a high default risk due to inconsistent payments and a high credit utilization
                 ratio,” financial institutions can take proactive steps to mitigate risks, such as offering repayment
                 plans or adjusting loan terms.

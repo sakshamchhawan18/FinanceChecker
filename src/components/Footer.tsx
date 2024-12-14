@@ -1,5 +1,6 @@
-"use client"
-import { FaFacebook, FaTwitter, FaLinkedin, FaInstagram } from 'react-icons/fa';
+"use client";
+import Link from "next/link";
+import { FaFacebook, FaTwitter, FaLinkedin, FaInstagram } from "react-icons/fa";
 
 const Footer = () => {
   return (
@@ -19,10 +20,26 @@ const Footer = () => {
           <div className="w-full sm:w-1/4 mb-6 sm:mb-0">
             <h4 className="text-xl font-semibold text-gray-200">Quick Links</h4>
             <ul className="mt-4">
-              <li><a href="/" className="text-gray-400 hover:text-white">Home</a></li>
-              <li><a href="/about" className="text-gray-400 hover:text-white">About</a></li>
-              <li><a href="/services" className="text-gray-400 hover:text-white">Services</a></li>
-              <li><a href="/contact" className="text-gray-400 hover:text-white">Contact</a></li>
+              <li>
+                <Link href="/" className="text-gray-400 hover:text-white">
+                  Home
+                </Link>
+              </li>
+              <li>
+                <Link href="/about" className="text-gray-400 hover:text-white">
+                  About
+                </Link>
+              </li>
+              <li>
+                <Link href="/services" className="text-gray-400 hover:text-white">
+                  Services
+                </Link>
+              </li>
+              <li>
+                <Link href="/contact" className="text-gray-400 hover:text-white">
+                  Contact
+                </Link>
+              </li>
             </ul>
           </div>
 
@@ -40,18 +57,18 @@ const Footer = () => {
           <div className="w-full sm:w-1/4 mb-6 sm:mb-0">
             <h4 className="text-xl font-semibold text-gray-200">Follow Us</h4>
             <div className="mt-4 flex space-x-4">
-              <a href="https://facebook.com" className="text-gray-400 hover:text-white">
+              <Link href="https://facebook.com" target="_blank" className="text-gray-400 hover:text-white">
                 <FaFacebook size={24} />
-              </a>
-              <a href="https://twitter.com" className="text-gray-400 hover:text-white">
+              </Link>
+              <Link href="https://twitter.com" target="_blank" className="text-gray-400 hover:text-white">
                 <FaTwitter size={24} />
-              </a>
-              <a href="https://linkedin.com" className="text-gray-400 hover:text-white">
+              </Link>
+              <Link href="https://linkedin.com" target="_blank" className="text-gray-400 hover:text-white">
                 <FaLinkedin size={24} />
-              </a>
-              <a href="https://instagram.com" className="text-gray-400 hover:text-white">
+              </Link>
+              <Link href="https://instagram.com" target="_blank" className="text-gray-400 hover:text-white">
                 <FaInstagram size={24} />
-              </a>
+              </Link>
             </div>
           </div>
         </div>
