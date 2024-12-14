@@ -1,0 +1,19 @@
+/* Basic global styles */
+/* globals.css or your global CSS file */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f8f9fa;
+    color: #333;
+  }
+  
+  h1, p {
+    text-align: center;
+  }
+  
